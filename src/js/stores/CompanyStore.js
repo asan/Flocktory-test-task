@@ -19,16 +19,8 @@ function fetch(){
     .done(function(data) {
       _companies = {};
       for(var i in data){
-        console.log(i, data[i])
         _companies[data[i].id] = data[i];
       }
-      // _companies = {
-      //   1: {title: 'company1', metrics: {test: 5, test1: 0}},
-      //   2: {title: 'company2', metrics: {test: 14, test1: 0}},
-      //   3: {title: 'company2', metrics: {test: 1, test1: 30}},
-      // }
-      console.log(_companies)
-      
     });
 }
 
@@ -115,13 +107,9 @@ AppDispatcher.register(function(payload) {
       return true;
   }
 
-  // This often goes in each case that should trigger a UI change. This store
-  // needs to trigger a UI change after every view action, so we can make the
-  // code less repetitive by putting it here.  We need the default case,
-  // however, to make sure this only gets called after one of the cases above.
   CompanyStore.emitChange();
 
-  return true; // No errors.  Needed by promise in Dispatcher.
+  return true;
 });
 
 module.exports = CompanyStore;

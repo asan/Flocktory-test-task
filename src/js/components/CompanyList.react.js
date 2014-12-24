@@ -11,7 +11,7 @@ var CompanyList =
 
       for (var key in comp) {
         todos.push(
-          <li key={comp[key].id}>
+          <li key={comp[key].id} className="checkbox">
             <label>
               <input
                 type="checkbox"
@@ -22,7 +22,15 @@ var CompanyList =
             </label>
           </li>);
       }
-      return <ul>{todos}</ul>
+      if(!todos.length){
+        return (
+          <span>Загрузка...</span>
+        )
+      }
+      return (
+          <ul>{todos}</ul>
+      )
+      
     },
     _onToggle: function(id) {
       return function() {
